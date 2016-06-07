@@ -6,9 +6,12 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body class="page-sub-page page-create-account page-account" id="page-top">
+  <div class="wrapper">
+    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/messages' %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </div>
 </body>
 </html>
