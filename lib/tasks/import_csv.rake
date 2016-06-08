@@ -27,7 +27,9 @@ namespace :import_csv do
             county: l["County"],
             parcel_number: l["Parcel Number"],
             locale: l["Locale"],
-            complex_name: l["Complex Name"]
+            complex_name: l["Complex Name"],
+            latitude: l["Latitude"],
+            longitude: l["Longitude"]
           )
           puts "updated listing #{listing.id}: #{listing.mls_number}"
         end
@@ -50,7 +52,9 @@ namespace :import_csv do
           county: l["County"],
           parcel_number: l["Parcel Number"],
           locale: l["Locale"],
-          complex_name: l["Complex Name"]
+          complex_name: l["Complex Name"],
+          latitude: l["Latitude"],
+          longitude: l["Longitude"]
         )
         puts "created listing #{listing.id}: #{listing.mls_number}"
       end
