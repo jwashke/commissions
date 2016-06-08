@@ -19,6 +19,8 @@ class CreateListings < ActiveRecord::Migration
       t.string :parcel_number
       t.string :locale
       t.string :complex_name
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps null: false
     end
