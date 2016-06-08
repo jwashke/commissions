@@ -14,7 +14,7 @@ RSpec.feature "User can login to an existing account" do
         # should probably take them homes index upon login when thats implemented
         expect(current_path).to eq(root_path)
         expect(page).to have_content("Signed in successfully.")
-        expect(page).to have_content("Sign Out")
+        expect(page).to have_content("Sign out")
     end
   end
 
