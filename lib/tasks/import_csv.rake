@@ -6,9 +6,9 @@ namespace :import_csv do
     contents = CSV.open "tmp/data/Full\ Export.csv", headers: true
     contents.each do |l|
       prev_record = Listing.find_by(mls_number: l["MLS Number"])
-      if prev_record
+      listing = prev_record if prev_record
         if prev_record.last_change_timestamp != DateTime.strptime(l["Last Change Timestamp"], "%m/%d/%Y %I:%M:%S %p")
-          prev_record.update(
+          listing.update(
             mls_number: l["MLS Number"],
             last_change_timestamp: DateTime.strptime(l["Last Change Timestamp"], "%m/%d/%Y %I:%M:%S %p"),
             property_type: l["Type"],
@@ -28,7 +28,7 @@ namespace :import_csv do
             locale: l["Locale"],
             complex_name: l["Complex Name"]
           )
-          puts "updated listing #{prev_record.id}: #{prev_record.mls_number}"
+          puts "updated listing #{listing.id}: #{listing.mls_number}"
         end
       else
         listing = Listing.create!(
