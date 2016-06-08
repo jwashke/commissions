@@ -1,0 +1,49 @@
+<!-- Page Content -->
+<div id="page-content">
+   <!-- Breadcrumb -->
+   <div class="container">
+       <ol class="breadcrumb">
+           <li><%= link_to "Home", root_path %></li>
+           <li class="active">Create an Account</li>
+       </ol>
+   </div>
+   <!-- end Breadcrumb -->
+    <div class="container">
+      <header><h1>Create an Account</h1></header>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), id: "form-create-account") do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "form-control", id: "form-create-account-email" %>
+        </div>
+
+        <div class="field form-group">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "form-create-account-password" %>
+        </div>
+
+        <div class="field form-group">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "form-create-account-confirm-password" %>
+        </div>
+
+        <div class="actions form-group clearfix">
+          <%= f.submit "Create Account", class: "btn btn-default pull-right", id: "account-submit" %>
+        </div>
+      <% end %>
+                          <hr>
+      <div class="center">
+                     <figure class="note">By clicking the “Create an Account” button you agree with our <a href="#">Terms and conditions</a></figure>
+                 </div>
+              </div>
+           </div><!-- /.row -->
+       </div><!-- /.container -->
+  </div><!-- end Page Content -->
