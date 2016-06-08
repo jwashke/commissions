@@ -6,8 +6,9 @@ namespace :import_csv do
     contents = CSV.open "tmp/data/Full\ Export.csv", headers: true
     contents.each do |l|
       prev_record = Listing.find_by(mls_number: l["MLS Number"])
-      listing = prev_record if prev_record
-        if prev_record.last_change_timestamp != DateTime.strptime(l["Last Change Timestamp"], "%m/%d/%Y %I:%M:%S %p")
+      if prev_record
+        listing = prev_record
+        if listing.last_change_timestamp != DateTime.strptime(l["Last Change Timestamp"], "%m/%d/%Y %I:%M:%S %p")
           listing.update(
             mls_number: l["MLS Number"],
             last_change_timestamp: DateTime.strptime(l["Last Change Timestamp"], "%m/%d/%Y %I:%M:%S %p"),
