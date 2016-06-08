@@ -1,16 +1,31 @@
-<h2>Forgot your password?</h2>
+<!-- Page Content -->
+<div id="page-content">
+  <!-- Breadcrumb -->
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Sign In", new_user_session_path %></li>
+      <li class="active">Forgot Password</li>
+    </ol>
+    </div>
+    <!-- end Breadcrumb -->
+    <div class="container">
+      <header><h1>Forgot Password</h1></header>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+            <div class="field form-group">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true %>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+            <div class="actions form-group clearfix">
+              <%= f.submit "Send me reset password instructions", class: "btn btn-default pull-right", id: "account-submit" %>
+            </div>
+          <% end %>
+       </div>
+     </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- end Page Content -->

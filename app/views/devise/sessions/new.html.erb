@@ -1,38 +1,34 @@
 <!-- Page Content -->
 <div id="page-content">
-   <!-- Breadcrumb -->
-   <div class="container">
-       <ol class="breadcrumb">
-           <li><a href="#">Home</a></li>
-           <li class="active">Sign In</li>
-       </ol>
-   </div>
-   <!-- end Breadcrumb -->
+  <!-- Breadcrumb -->
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+      <li class="active">Sign In</li>
+    </ol>
+    </div>
+    <!-- end Breadcrumb -->
     <div class="container">
       <header><h1>Sign In</h1></header>
       <div class="row">
         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), id: "") do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: "form-control", id: "form-create-account-email" %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "form-create-account-password" %>
-  </div>
-
-  <div class="actions form-group clearfix">
-    <%= f.submit "Sign In to My Account", class: "btn btn-default pull-right", id: "account-submit" %>
-  </div>
-<% end %>
-<hr>
-            <div class="center"><%= link_to "I don't remember my password", new_user_password_path %></div>
-</div>
-</div><!-- /.row -->
-</div><!-- /.container -->
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), id: "") do |f| %>
+            <%= devise_error_messages! %>
+            <div class="field form-group">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, class: "form-control", id: "form-create-account-email" %>
+            </div>
+            <div class="field form-group">
+              <%= f.label :password %>
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "form-create-account-password" %>
+            </div>
+            <div class="actions form-group clearfix">
+              <%= f.submit "Sign In to My Account", class: "btn btn-default pull-right", id: "account-submit" %>
+            </div>
+          <% end %>
+          <hr>
+          <div class="center"><%= link_to "I don't remember my password", new_user_password_path %></div>
+       </div>
+     </div><!-- /.row -->
+  </div><!-- /.container -->
 </div><!-- end Page Content -->
