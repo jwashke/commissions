@@ -40,6 +40,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'simplecov'
 end
 
 group :development do
