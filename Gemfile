@@ -27,6 +27,8 @@ gem 'devise'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'underscore-rails'
 gem 'gmaps4rails'
+gem 'figaro'
+gem 'faraday'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
