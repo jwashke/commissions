@@ -9,23 +9,10 @@ function initMap() {
   });
 
   var contentString = ""
-
-  function getInfoWindowString(address, list_price) {
-    contentString = '<div id="content">'+
-       '<div id="siteNotice">'+
-       '</div>'+
-       '<h1 id="firstHeading" class="firstHeading">' + address + '</h1>'+
-       '<div id="bodyContent">'+
-       '<h3>' + list_price + '</h3>' +
-       '</div>'+
-       '</div>';
-   };
-
-
-
-
   var markers = []
   var image = "assets/marker.png"
+  var pictureLabel = document.createElement("img");
+       pictureLabel.src = "assets/single-family.png";
   var contentString = ""
   //use getJson instead of .ajax
   $.ajax({
@@ -37,15 +24,17 @@ function initMap() {
         contentString = '<div id="content">'+
            '<div id="siteNotice">'+
            '</div>'+
-           '<h1 id="firstHeading" class="firstHeading">' + listing.address + '</h1>'+
+           '<h3 id="firstHeading" class="firstHeading">' + listing.address + '</h3>'+
            '<div id="bodyContent">'+
-           '<h3>' + listing.list_price + '</h3>' +
+           '<h3>$' + listing.list_price + '</h3>' +
            '</div>'+
            '</div>';
+        infoWindow = new google.maps.InfoWindow({ content: contentString });
         tmpLatLng = new google.maps.LatLng( listing.latitude, listing.longitude);
         var marker = new google.maps.Marker({
           position: tmpLatLng,
           icon: image,
+          labelContent: pictureLabel,
           title: listing.address,
           info: contentString
         });
