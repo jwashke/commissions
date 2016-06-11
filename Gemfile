@@ -25,8 +25,6 @@ gem 'puma'
 gem 'devise'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'underscore-rails'
-gem 'gmaps4rails'
 gem 'figaro'
 gem 'faraday'
 gem 'responders'
