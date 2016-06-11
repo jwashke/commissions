@@ -1,24 +1,30 @@
-<!-- Breadcrumb -->
-<div class="container">
-    <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li class="active">404</li>
-    </ol>
-</div>
-<!-- end Breadcrumb -->
-
-<div class="container">
-    <section id="404">
-        <div class="error-page">
-            <div class="title">
-                <img alt="" src="assets/img/error-page-background.png" class="top">
-                <header>404</header>
-                <img alt="" src="assets/img/error-page-background.png" class="bottom">
+<!-- Page Content -->
+<div id="page-content">
+   <!-- Breadcrumb -->
+   <div class="container">
+       <ol class="breadcrumb">
+           <li class="active">Home</li>
+       </ol>
+   </div>
+   <!-- end Breadcrumb -->
+    <div class="container">
+      <header><h1>Welcome</h1></header>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+          <div class="center">
+            <figure class="note">Login or Create an account to get started.</a></figure>
+          </div>
+          <hr>  
+            <div class="row btn-row text-center">
+              <%= link_to "Login", new_user_registration_path, class: "btn btn-default btn-wide" %>
             </div>
-            <h2 class="no-border">Page not found</h2>
-            <a href="" class="link-arrow back" onclick="history.back(-1)">Go Back</a>
-        </div>
-    </section>
-</div><!-- /.container -->
-</div>
-<!-- end Page Content -->
+            <div class="row btn-row text-center">
+              <%= link_to "Create an Account", new_user_registration_path, class: "btn btn-default btn-wide" %>
+            </div>
+
+          <hr>
+
+              </div>
+           </div><!-- /.row -->
+       </div><!-- /.container -->
+  </div><!-- end Page Content -->
