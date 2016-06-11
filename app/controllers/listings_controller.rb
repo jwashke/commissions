@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
-  def index
+  def show
+    @listing = Listing.find_by(mls_number: params[:mls_number])
   end
 end
