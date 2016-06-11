@@ -15,6 +15,9 @@ function initMap() {
        pictureLabel.src = "assets/single-family.png";
   var contentString = ""
   //use getJson instead of .ajax
+  // var listings_url = "api/v1/listings"
+  // jQuery.getJSON( url [, data ] [, success ] )
+  // $.getJSON(url, )
   $.ajax({
     type: 'GET',
     // dont use full path

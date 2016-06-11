@@ -19,6 +19,7 @@ class CreateListings < ActiveRecord::Migration
       t.string :parcel_number
       t.string :locale
       t.string :complex_name
+      t.text :public_remarks
       t.float :latitude
       t.float :longitude
 
