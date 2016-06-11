@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree ../../../lib/assets/js
-//= require_tree ../../../lib/assets/bootstrap/js
 //= require bootstrap-sprockets
 //= require underscore
 //= require gmaps/google
