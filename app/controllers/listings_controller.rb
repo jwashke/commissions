@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @listing = Listing.find_by(mls_number: params[:mls_number])
+    listing = Listing.find_by(mls_number: params[:mls_number])
+    @listing = ListingShow.new(listing)
   end
 end
