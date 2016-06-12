@@ -4,13 +4,12 @@
 </div>
 
 <%= image_tag "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=#{@listing.latitude},#{@listing.longitude}&key=#{ENV['STREET_VIEW_KEY']}" %>
-<%= binding.pry %>
 
-<div id="streetview"></div>
+<div id="map"></div>
     <script>
       var map;
       function initMap() {
-        map = new google.maps.StreetViewPanorama(document.getElementById('streetview'), {
+        map = new google.maps.StreetViewPanorama(document.getElementById('map'), {
           position: {lat: <%= @listing.latitude %>, lng: <%= @listing.longitude %>},
           pitch: 20
         });
