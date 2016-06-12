@@ -1,6 +1,7 @@
 var infoWindow
 var mapDiv
 var map
+
 function initMap() {
   mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
