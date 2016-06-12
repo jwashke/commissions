@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     post 'signin' => 'devise/sessions#create', as: :user_session
     delete 'signout' => 'devise/sessions#destroy', as: :destroy_user_session
   end
+  get "/buyeragreement", to: "signing#new", as: :signing
+  post "/buyeragreement", to: "signing#create", as: :sign
   root to: "home#index"
   resources :listings, only: [:index]
   get "/listings/:mls_number", to: "listings#show", as: :listing

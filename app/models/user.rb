@@ -5,8 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :confirmable, :validatable
 
   validates :email, presence: true, uniqueness: true, case_sensitive: false
-  validates :password, presence: true
-  validates_confirmation_of :password
+
+  def sign_docs
+    self.update_attributes(signed_docs: true)
+    self.save
+  end
 
   protected
 
