@@ -1,0 +1,22 @@
+<!-- Page Content -->
+<div id="page-content">
+   <!-- Breadcrumb -->
+   <div class="container">
+       <ol class="breadcrumb">
+           <li><%= link_to "Home", root_path %></li>
+           <li class="active">Create an Account</li>
+       </ol>
+   </div>
+   <!-- end Breadcrumb -->
+    <div class="container">
+      <header><h1>Buyer Agreement</h1></header>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+          <div class="actions form-group clearfix">
+            <%= link_to "Sign Documents", sign_path, method: :post, class: "btn btn-default pull-right", id: "account-submit" %>
+          </div>
+          <hr>
+        </div>
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+</div><!-- end Page Content -->

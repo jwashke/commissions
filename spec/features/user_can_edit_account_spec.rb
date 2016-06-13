@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "User can edit their account" do
   context "with valid info" do
     it "redirects them to the home page and displays a flash message" do
-      user = create(:user)
+      user = create(:signed_user)
       login_as user, scope: :user
       visit edit_user_registration_path
 
@@ -13,8 +13,7 @@ RSpec.feature "User can edit their account" do
       fill_in "form-create-account-current-password", with: "password"
       click_button "Update"
 
-        # should probably take them homes index upon login when thats implemented
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(listings_path)
       expect(page).to have_content("Your account has been updated successfully")
       within(".navbar") do
         expect(page).to have_content("newemail@example.com")
@@ -34,8 +33,6 @@ RSpec.feature "User can edit their account" do
         fill_in "form-create-account-confirm-password", with: "newPassword"
         fill_in "form-create-account-current-password", with: "password"
         click_button "Update"
-
-          # should probably take them homes index upon login when thats implemented
 
         expect(current_path).to eq("/users")
         expect(page).to have_content("Email is invalid")

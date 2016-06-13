@@ -1,8 +1,8 @@
 require "rails_helper"
 
-RSpec.feature "User can create an account" do
+RSpec.feature "User can change their password" do
   context "with valid info" do
-    it "redirects them to the home page and displays a flash message" do
+    xit "redirects them to the home page and displays a flash message" do
         visit new_user_registration_path
 
         fill_in "form-create-account-email",            with: "user@example.com"
@@ -18,7 +18,7 @@ RSpec.feature "User can create an account" do
   end
 
   context "with invalid info" do
-    it "redirects them back to user new page with errors displayed" do
+    xit "redirects them back to user new page with errors displayed" do
       visit new_user_registration_path
 
       fill_in "form-create-account-email",            with: "user@example.com"

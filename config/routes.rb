@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: { registrations: "registrations" }, skip: [:sessions]
+  devise_for :users, :skip => [:sessions]
   as :user do
-    get "/login" => "devise/sessions#new"
-    get "sign_up" => "devise/registrations#new"
+    get 'signin' => 'devise/sessions#new', as: :new_user_session
+    post 'signin' => 'devise/sessions#create', as: :user_session
+    delete 'signout' => 'devise/sessions#destroy', as: :destroy_user_session
   end
+  get "/buyeragreement", to: "signing#new", as: :signing
+  post "/buyeragreement", to: "signing#create", as: :sign
   root to: "home#index"
   resources :listings, only: [:index]
   get "/listings/:mls_number", to: "listings#show", as: :listing
