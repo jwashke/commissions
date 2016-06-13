@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20160613004144) do
     t.string   "listing_agent_phone"
     t.string   "listing_agent_email"
     t.float    "transaction_broker_compensation"
+    t.boolean  "streetview_available"
   end
 
   create_table "users", force: :cascade do |t|
