@@ -11,17 +11,23 @@
       <div class="container">
         <div class="row">
         <!-- Property Detail Content -->
-          <div class="col-md-9 col-sm-9">
+        <div class="col-md-12">
             <section id="property-detail">
                 <header class="property-title">
                   <h1><%= @listing.address_line_one %></h1>
                   <figure><%= @listing.address_line_two %></figure>
                 </header>
+              </section>
+            </div>
+                <div class="col-md-9 col-sm-12">
                 <section id="property-gallery">
                   <div class="owl-carousel property-carousel">
-
+                    <div class="property-slide">
+                      <img src="https://maps.googleapis.com/maps/api/streetview?size=800x300&location=<%= @listing.latitude %>,<%= @listing.longitude %>&key=AIzaSyC8_5PQjZxAuVYV9OEQPz9d2HLCZfKaso0">
+                    </div><!-- /.property-slide -->
                   </div><!-- /.property-carousel -->
                 </section>
+              </section>
                 <div class="row">
                   <div class="col-md-4 col-sm-12">
                     <section id="quick-summary" class="clearfix">
@@ -30,21 +36,15 @@
                           <dt>Location</dt>
                             <dd><%= @listing.address_line_two %></dd>
                           <dt>Price</dt>
-                          <dd><span class="tag price">$78,000</span></dd>
+                          <dd><span class="tag price">$<%= @listing.list_price %></span></dd>
                                         <dt>Property Type:</dt>
-                                            <dd>House</dd>
-                                        <dt>Status:</dt>
-                                            <dd>Sale</dd>
+                                            <dd><%= @listing.property_type %></dd>
                                         <dt>Area:</dt>
-                                            <dd>860 m<sup>2</sup></dd>
+                                            <dd><%= @listing.square_feet %> ft<sup>2</sup></dd>
                                         <dt>Beds:</dt>
-                                            <dd>3</dd>
+                                            <dd><%= @listing.total_bedrooms %></dd>
                                         <dt>Baths:</dt>
-                                            <dd>2</dd>
-                                        <dt>Garages:</dt>
-                                            <dd>2</dd>
-                                        <dt>Rating:</dt>
-                                            <dd><div class="rating rating-overall" data-score="4"></div></dd>
+                                            <dd><%= @listing.total_baths %></dd>
                                     </dl>
                                 </section><!-- /#quick-summary -->
                             </div><!-- /.col-md-4 -->
@@ -60,68 +60,28 @@
                           </section>
                         </div>
                               <!-- sidebar -->
-                <div class="col-md-3 col-sm-3">
+                <div class="col-md-3 col-sm-12">
                     <section id="sidebar">
                         <aside id="edit-search">
-                            <header><h3>Commission</h3></header>
-                            <form role="form" id="form-sidebar" class="form-search" action="properties-listing.html">
-                                <div class="form-group">
-                                    <select name="type">
-                                        <option value="">Status</option>
-                                        <option value="1">Rent</option>
-                                        <option value="2">Sale</option>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="country">
-                                        <option value="">Country</option>
-                                        <option value="1">France</option>
-                                        <option value="2">Great Britain</option>
-                                        <option value="3">Spain</option>
-                                        <option value="4">Russia</option>
-                                        <option value="5">United States</option>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="city">
-                                        <option value="">City</option>
-                                        <option value="1">New York</option>
-                                        <option value="2">Los Angeles</option>
-                                        <option value="3">Chicago</option>
-                                        <option value="4">Houston</option>
-                                        <option value="5">Philadelphia</option>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="district">
-                                        <option value="">District</option>
-                                        <option value="1">Manhattan</option>
-                                        <option value="2">The Bronx</option>
-                                        <option value="3">Brooklyn</option>
-                                        <option value="4">Queens</option>
-                                        <option value="5">Staten Island</option>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="property-type">
-                                        <option value="">Property Type</option>
-                                        <option value="1">Apartment</option>
-                                        <option value="2">Condominium</option>
-                                        <option value="3">Cottage</option>
-                                        <option value="4">Flat</option>
-                                        <option value="5">House</option>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <div class="price-range">
-                                        <input id="price-input" type="text" name="price" value="1000;299000">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-default">Search Now</button>
-                                </div><!-- /.form-group -->
-                            </form><!-- /#form-map -->
-                        </aside><!-- /#edit-search -->
+                            <section id="quick-summary" class="clearfix">
+                              <header><h2>Commission</h2></header>
+                                <dl>
+                                  <dt>Buyer Agent:</dt>
+                                  <dd><span class="tag price">$<%= compensation_in_dollars(@listing.buyer_agency_compensation, @listing.list_price) %></span></dd>
+                                  <dt>Buyer Agent Percentage:</dt>
+                                  <dd><%= @listing.buyer_agency_compensation %>%</dd>
+                                  <dt>Transaction Broker:</dt>
+                                  <dd><span class="tag price">$<%= compensation_in_dollars(@listing.transaction_broker_compensation, @listing.list_price) %></span></dd>
+                                  <dt>Transaction Broker Percentage:</dt>
+                                  <dd><%= @listing.transaction_broker_compensation %>%</dd>
+                                  <dt>Listing Agent:</dt>
+                                    <dd><%= @listing.listing_agent_name %></dd>
+                                  <dt>Phone:</dt>
+                                  <dd><%= @listing.listing_agent_phone %></dd>
+                                  <dt>Email:</dt>
+                                  <dd><%= @listing.listing_agent_email %></dd>
+                                </dl>
+                                        </section><!-- /#quick-summary -->
                     </section><!-- /#sidebar -->
                 </div><!-- /.col-md-3 -->
                 <!-- end Sidebar -->
