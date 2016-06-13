@@ -29,6 +29,15 @@ namespace :import_csv do
           listing.latitude = l["Latitude"]
           listing.longitude = l["Longitude"]
           listing.public_remarks = l["Public Remarks"]
+          listing.total_baths = l["Total Baths"]
+          listing.total_bedrooms = l["Total Bedrooms"]
+          listing.square_feet = l["SqFt Total"]
+          listing.lot_square_acres = l["Lot Size Acres"]
+          listing.buyer_agency_compensation = l["Buyer Agency Compensation"]
+          listing.listing_agent_name = l["Listing Agent Name"]
+          listing.listing_agent_phone = l["Listing Agent Direct Work Phone"]
+          listing.listing_agent_email = l["Listing Agent Email"]
+          listing.transaction_broker_compensation = l["Transaction Broker Compensation"]
           listing.save!
         end
         puts "made record #{record.mls_number}"

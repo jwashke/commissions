@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def require_login
-    binding.pry
-    redirect_to login_path unless current_user
+  def require_user_and_user_signed_docs
+    redirect_to root_path unless user_signed_in? && current_user.signed_docs?
   end
 end

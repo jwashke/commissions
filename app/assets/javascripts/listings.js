@@ -1,6 +1,7 @@
 var infoWindow
 var mapDiv
 var map
+
 function initMap() {
   mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
@@ -24,10 +25,11 @@ function initMap() {
     url: 'http://localhost:3000/api/v1/listings',
     success: function(listings) {
       $.each(listings, function(index, listing) {
+        var mls_number = '"/listings/' + listing.mls_number.toString() + '"'
         contentString = '<div id="content">'+
            '<div id="siteNotice">'+
            '</div>'+
-           '<h3 id="firstHeading" class="firstHeading">' + listing.address + '</h3>'+
+           '<a href=' + mls_number + '><h3 id="firstHeading" class="firstHeading">' + listing.address + '</h3></a>'+
            '<div id="bodyContent">'+
            '<h3>$' + listing.list_price + '</h3>' +
            '</div>'+
