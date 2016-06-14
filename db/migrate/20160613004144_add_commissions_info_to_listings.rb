@@ -9,5 +9,6 @@ class AddCommissionsInfoToListings < ActiveRecord::Migration
     add_column :listings, :listing_agent_phone, :string
     add_column :listings, :listing_agent_email, :string
     add_column :listings, :transaction_broker_compensation, :float
+    add_column :listings, :streetview_available, :boolean
   end
 end

@@ -1,3 +1,4 @@
+
 <!-- Page Content -->
   <div id="page-content">
     <!-- Breadcrumb -->
@@ -23,7 +24,11 @@
                 <section id="property-gallery">
                   <div class="owl-carousel property-carousel">
                     <div class="property-slide">
+                      <% if @listing.streetview_available || @listing.streetview_available? %>
                       <img src="https://maps.googleapis.com/maps/api/streetview?size=680x300&location=<%= @listing.latitude %>,<%= @listing.longitude %>&key=AIzaSyC8_5PQjZxAuVYV9OEQPz9d2HLCZfKaso0">
+                      <% else %>
+                      <img src="https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=<%= @listing.latitude %>,<%= @listing.longitude %>&zoom=18&size=680x300&path=weight:3%7Ccolor:blue%7Cenc:{coaHnetiVjM??_SkM??~R&key=AIzaSyC8_5PQjZxAuVYV9OEQPz9d2HLCZfKaso0">
+                      <% end %>
                     </div><!-- /.property-slide -->
                   </div><!-- /.property-carousel -->
                 </section>

@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+
   before_action :require_user_and_user_signed_docs
 
   def index
