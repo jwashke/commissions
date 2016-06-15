@@ -95,10 +95,6 @@ function initMap() {
         marker.setMap(map)
         markers.push(marker);
       });
-
-
-
-      // markerCluster = new MarkerClusterer(map, markers, options);
     }
   });
 
@@ -108,7 +104,6 @@ function initMap() {
     var propertyType = $("#type").val()
     var bathrooms = $("#bathroom").val()
     var bedrooms = $("#bedroom").val()
-    // markerCluster.clearMarkers()
     for (i = 0; i < markers.length; i++) {
       markers[i].setMap(map)
       if (markers[i].city != city && city != "City") {
@@ -119,12 +114,12 @@ function initMap() {
       };
       if (markers[i].bathrooms != bathrooms && bathrooms != "Bathrooms") {
         markers[i].setMap(null);
+        console.log(bathrooms)
       };
       if (markers[i].bedrooms != bedrooms && bedrooms != "Bedrooms") {
         markers[i].setMap(null);
       };
     }
-    // markerCluster = new MarkerClusterer(map, markers, options);
   });
 }
 $(document).ready(function($) {
