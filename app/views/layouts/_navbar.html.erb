@@ -15,11 +15,11 @@
       </div>
       <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
         <ul class="nav navbar-nav">
+          <li><%= link_to "Home", root_path %></li>
           <% if current_admin? %>
             <li><%= link_to "Upload CSV", new_admin_import_path %></li>
             <li><%= link_to "View Last Import", admin_latest_import_path %></li>
           <% end %>
-          <li><%= link_to "Home", root_path %></li>
           <% if current_user %>
             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
             <li><%= link_to current_user.email, edit_user_registration_path %></li>
