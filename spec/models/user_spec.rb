@@ -15,6 +15,33 @@ RSpec.describe User, type: :model do
       expect(user.confirmation_required?).to be(false)
     end
   end
+
+  describe "#sign_docs" do
+    it "changes the users signed docs attribute to true and save it" do
+      user = create(:user)
+
+      user.sign_docs
+      expect(user.signed_docs).to be(true)
+    end
+  end
+
+  describe "#admin?" do
+    context "user is an admin" do
+      it "returns true" do
+        user = create(:user, admin: true)
+
+        expect(user.admin?).to be_truthy
+      end
+    end
+
+    context "user is not an admin" do
+      it "returns false" do
+        user = create(:user)
+
+        expect(user.admin?).to be_falsy
+      end
+    end
+  end
 end
 
 class User < ActiveRecord::Base
