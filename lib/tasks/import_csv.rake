@@ -38,7 +38,6 @@ namespace :import_csv do
         listing.listing_agent_phone = l["Listing Agent Direct Work Phone"]
         listing.listing_agent_email = l["Listing Agent Email"]
         listing.transaction_broker_compensation = l["Transaction Broker Compensation"]
-        # listing.streetview_available = streetview_available?(listing.latitude, listing.longitude)
         listing.save!
         puts "made record #{listing.mls_number}"
       end
