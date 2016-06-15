@@ -19,9 +19,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :imports, only: [:new, :import] do
-      collection {post :import}
-    end
+    resources :imports, only: [:new, :create] 
     get "/imports/latest", to: "imports#show", as: :latest_import
   end
 end
