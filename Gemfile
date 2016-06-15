@@ -30,7 +30,6 @@ gem 'figaro'
 gem 'faraday'
 gem 'responders'
 gem "active_model_serializers", github: "rails-api/active_model_serializers"
-gem 'sidekiq'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -48,9 +47,15 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'simplecov'
   gem 'pry-rails'
+  gem 'database_cleaner'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
 end

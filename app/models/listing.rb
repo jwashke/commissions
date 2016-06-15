@@ -30,11 +30,12 @@ class Listing < ActiveRecord::Base
 
 private
   def self.create_csv(file_path)
-    new_csv = CSV.open("tmp/data/new.csv", "wb")
+    new_csv = CSV.open("tmp/data/new.csv", mode = "wb")
     contents = CSV.open file_path
     contents.each do |listing|
       new_csv << listing
     end
+    new_csv.close
   end
 
   def self.import(import)
@@ -73,7 +74,7 @@ private
         listing.listing_agent_phone = l["Listing Agent Direct Work Phone"]
         listing.listing_agent_email = l["Listing Agent Email"]
         listing.transaction_broker_compensation = l["Transaction Broker Compensation"]
-        listing.save!
+        listing.save
       end
     end
     import.update(
