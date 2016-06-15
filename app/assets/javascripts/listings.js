@@ -64,9 +64,10 @@ function initMap() {
         contentString = '<div id="content">'+
            '<div id="siteNotice">'+
            '</div>'+
-           '<a href=' + mls_number + '><h3 id="firstHeading" class="firstHeading">' + listing.address + '</h3></a>'+
+           '<a href=' + mls_number + '><h5 id="firstHeading" class="infobox-title">' + listing.address + '</h5></a>'+
            '<div id="bodyContent">'+
-           '<h3>$' + listing.list_price + '</h3>' +
+           '<h5>List Price: ' + listing.price + '</h5>' +
+           '<h5>Commission:   <span class="tag price">' + listing.commission + '</span></h5>' +
            '</div>'+
            '</div>';
         infoWindow = new google.maps.InfoWindow({ content: contentString });

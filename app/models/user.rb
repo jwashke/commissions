@@ -14,10 +14,4 @@ class User < ActiveRecord::Base
   def admin?
     self.admin
   end
-
-  protected
-
-  def confirmation_required?
-    false
-  end
 end

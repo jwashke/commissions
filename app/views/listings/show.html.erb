@@ -39,7 +39,7 @@
                 <dt>Location</dt>
                 <dd><%= @listing.address_line_two %></dd>
                 <dt>Price</dt>
-                <dd><span class="tag price">$<%= @listing.list_price %></span></dd>
+                <dd><span class="tag price"><%= number_to_currency(@listing.list_price, precision: 2) %></span></dd>
                 <dt>Property Type:</dt>
                 <dd><%= @listing.property_type %></dd>
                 <dt>Area:</dt>
@@ -68,7 +68,7 @@
             <header><h2>Commission</h2></header>
             <dl>
             <dt>Buyer Agent Commission:</dt>
-            <dd><span class="tag price">$<%= compensation_in_dollars(@listing.buyer_agency_compensation, @listing.list_price) %></span></dd>
+            <dd><span class="tag price"><%= compensation_in_dollars(@listing.buyer_agency_compensation, @listing.list_price) %></span></dd>
             <dt>Buyer Agent Percentage:</dt>
             <dd><%= @listing.buyer_agency_compensation %>%</dd>
             <dt>Listing Agent:</dt>
