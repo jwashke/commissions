@@ -114,7 +114,6 @@ function initMap() {
       };
       if (markers[i].bathrooms != bathrooms && bathrooms != "Bathrooms") {
         markers[i].setMap(null);
-        console.log(bathrooms)
       };
       if (markers[i].bedrooms != bedrooms && bedrooms != "Bedrooms") {
         markers[i].setMap(null);
