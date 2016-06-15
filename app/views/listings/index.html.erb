@@ -1,61 +1,57 @@
-
-
 <div id="map" class="has-parallax"></div>
-
-    <!-- Search Box -->
-    <div class="search-box-wrapper">
-        <div class="search-box-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-4">
-                        <div class="search-box map">
-                            <form role="form" id="form-map" class="form-map form-search">
-                                <h2>Search</h2>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="search-box-address" placeholder="Address">
-                                </div>
-                                <div class="form-group">
-                                    <select name="type" id="type">
-                                      <option value="Property Type">Property Type</option>
-                                      <% @property_types.each do |type| %>
-                                        <option value="<%= type %>"><%= type %></option>
-                                      <% end %>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="city" id="city">
-                                        <option value="City">City</option>
-                                        <% @cities.each do |city| %>
-                                          <option value="<%= city %>"><%= city %></option>
-                                        <% end %>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="bedroom" id="bedroom">
-                                      <option value="Bedrooms">Bedrooms</option>
-                                      <% @bedrooms.each do |bedroom| %>
-                                        <option value="<%= bedroom %>"><%= bedroom %></option>
-                                      <% end %>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="bathroom" id="bathroom">
-                                      <option value="Bathrooms">Bathrooms</option>
-                                      <% @bathrooms.each do |bathroom| %>
-                                        <option value="<%= bathroom %>"><%= bathroom %></option>
-                                      <% end %>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <a href="#" class="btn btn-default" id="search">Search Now</a>
-                                </div><!-- /.form-group -->
-                            </form><!-- /#form-map -->
-                        </div><!-- /.search-box.map -->
-                    </div><!-- /.col-md-3 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </div><!-- /.search-box-inner -->
-    </div>
-    <!-- end Search Box -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyC8_5PQjZxAuVYV9OEQPz9d2HLCZfKaso0"
-        async defer></script>
+<!-- Search Box -->
+<div class="search-box-wrapper">
+  <div class="search-box-inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4">
+          <div class="search-box map">
+            <form role="form" id="form-map" class="form-map form-search">
+              <h2>Search</h2>
+              <div class="form-group">
+                <input type="text" class="form-control" id="search-box-address" placeholder="Address">
+              </div>
+              <div class="form-group">
+                <select name="type" id="type">
+                  <option value="Property Type">Property Type</option>
+                  <% @property_types.each do |type| %>
+                    <option value="<%= type %>"><%= type %></option>
+                  <% end %>
+                </select>
+              </div><!-- /.form-group -->
+              <div class="form-group">
+                <select name="city" id="city">
+                  <option value="City">City</option>
+                  <% @cities.each do |city| %>
+                    <option value="<%= city %>"><%= city %></option>
+                  <% end %>
+                </select>
+              </div><!-- /.form-group -->
+              <div class="form-group">
+                <select name="bedroom" id="bedroom">
+                  <option value="Bedrooms">Bedrooms</option>
+                  <% @bedrooms.each do |bedroom| %>
+                    <option value="<%= bedroom %>"><%= bedroom %></option>
+                  <% end %>
+                </select>
+              </div><!-- /.form-group -->
+              <div class="form-group">
+                <select name="bathroom" id="bathroom">
+                  <option value="Bathrooms">Bathrooms</option>
+                  <% @bathrooms.each do |bathroom| %>
+                    <option value="<%= bathroom %>"><%= bathroom %></option>
+                  <% end %>
+                </select>
+              </div><!-- /.form-group -->
+              <div class="form-group">
+                <a href="#" class="btn btn-default" id="search">Search Now</a>
+              </div><!-- /.form-group -->
+            </form><!-- /#form-map -->
+          </div><!-- /.search-box.map -->
+        </div><!-- /.col-md-3 -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div><!-- /.search-box-inner -->
+</div>
+<!-- end Search Box -->
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyC8_5PQjZxAuVYV9OEQPz9d2HLCZfKaso0" async defer></script>
