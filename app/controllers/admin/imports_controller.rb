@@ -11,5 +11,4 @@ class Admin::ImportsController < Admin::BaseController
     Listing.new_import(params[:file])
     redirect_to admin_latest_import_path
   end
-
 end
