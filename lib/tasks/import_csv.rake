@@ -3,7 +3,7 @@ require 'csv'
 namespace :import_csv do
   desc "loads new listings into database"
   task listings: :environment do
-    contents = CSV.open "tmp/data/Full\ Export.csv", headers: true
+    contents = CSV.open "tmp/data/Full\ Export_3.csv", headers: true
     Listing.update_all(status: "inactive")
     ActiveRecord::Base.transaction do
       contents.each do |l|

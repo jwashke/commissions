@@ -15,59 +15,44 @@
                                     <input type="text" class="form-control" id="search-box-address" placeholder="Address">
                                 </div>
                                 <div class="form-group">
-                                    <select name="type">
-                                        <option value="">Status</option>
-                                        <option value="1">Rent</option>
-                                        <option value="2">Sale</option>
+                                    <select name="type" id="type">
+                                      <option value="Property Type">Property Type</option>
+                                      <% @property_types.each do |type| %>
+                                        <option value="<%= type %>"><%= type %></option>
+                                      <% end %>
                                     </select>
                                 </div><!-- /.form-group -->
                                 <div class="form-group">
-                                    <select name="country">
-                                        <option value="">Country</option>
-                                        <option value="1">France</option>
-                                        <option value="2">Great Britain</option>
-                                        <option value="3">Spain</option>
-                                        <option value="4">Russia</option>
-                                        <option value="5">United States</option>
+                                    <select name="city" id="city">
+                                        <option value="City">City</option>
+                                        <% @cities.each do |city| %>
+                                          <option value="<%= city %>"><%= city %></option>
+                                        <% end %>
                                     </select>
                                 </div><!-- /.form-group -->
                                 <div class="form-group">
-                                    <select name="city">
-                                        <option value="">City</option>
-                                        <option value="1">New York</option>
-                                        <option value="2">Los Angeles</option>
-                                        <option value="3">Chicago</option>
-                                        <option value="4">Houston</option>
-                                        <option value="5">Philadelphia</option>
+                                    <select name="bedroom" id="bedroom">
+                                      <option value="Bedrooms">Bedrooms</option>
+                                      <% @bedrooms.each do |bedroom| %>
+                                        <option value="<%= bedroom %>"><%= bedroom %></option>
+                                      <% end %>
                                     </select>
                                 </div><!-- /.form-group -->
                                 <div class="form-group">
-                                    <select name="district">
-                                        <option value="">District</option>
-                                        <option value="1">Manhattan</option>
-                                        <option value="2">The Bronx</option>
-                                        <option value="3">Brooklyn</option>
-                                        <option value="4">Queens</option>
-                                        <option value="5">Staten Island</option>
+                                    <select name="bathroom" id="bathroom">
+                                      <option value="">Bathrooms</option>
+                                      <% @bathrooms.each do |bathroom| %>
+                                        <option value="<%= bathroom %>"><%= bathroom %></option>
+                                      <% end %>
                                     </select>
                                 </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="property-type">
-                                        <option value="">Property Type</option>
-                                        <option value="1">Apartment</option>
-                                        <option value="2">Condominium</option>
-                                        <option value="3">Cottage</option>
-                                        <option value="4">Flat</option>
-                                        <option value="5">House</option>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <div class="price-range">
+                                <!-- <div class="form-group">
+                                    <div class="price-range" id="price-range">
                                         <input id="price-input" type="text" name="price" value="1000;299000">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-default">Search Now</button>
+                                    <a href="#" class="btn btn-default" id="search">Search Now</a>
                                 </div><!-- /.form-group -->
                             </form><!-- /#form-map -->
                         </div><!-- /.search-box.map -->
