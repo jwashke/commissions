@@ -8,7 +8,7 @@ class Admin::ImportsController < Admin::BaseController
   end
 
   def import
-    Listing.import(params[:file])
+    Listing.new_import(params[:file])
     redirect_to admin_latest_import_path
   end
 
