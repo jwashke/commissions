@@ -78,7 +78,9 @@ function initMap() {
           title: listing.address,
           info: contentString,
           city: listing.city,
-          propertyType: listing.property_type
+          propertyType: listing.property_type,
+          bathrooms: listing.total_baths,
+          bedrooms: listing.total_bedrooms
         });
         addresses.push(
           {
@@ -86,7 +88,6 @@ function initMap() {
             value: listing.mls_number.toString()
           }
         );
-
         google.maps.event.addListener( marker, 'click', function() {
            infoWindow.setContent( marker.info );
            infoWindow.open( map, marker );
@@ -105,16 +106,21 @@ function initMap() {
   $("#search").click(function(){
     var city = $("#city").val()
     var propertyType = $("#type").val()
+    var bathrooms = $("#bathroom").val()
+    var bedrooms = $("#bedroom").val()
     // markerCluster.clearMarkers()
     for (i = 0; i < markers.length; i++) {
-      if (city == "City") {
-        markers[i].setMap(map);
-      } else if (markers[i].city != city) {
+      markers[i].setMap(map)
+      if (markers[i].city != city && city != "City") {
         markers[i].setMap(null);
       };
-      if (propertyType == "Property Type") {
-        markers[i].setMap(map);
-      } else if (markers[i].propertyType != propertyType) {
+      if (markers[i].propertyType != propertyType && propertyType != "Property Type") {
+        markers[i].setMap(null);
+      };
+      if (markers[i].bathrooms != bathrooms && bathrooms != "Bathrooms") {
+        markers[i].setMap(null);
+      };
+      if (markers[i].bedrooms != bedrooms && bedrooms != "Bedrooms") {
         markers[i].setMap(null);
       };
     }
@@ -122,12 +128,12 @@ function initMap() {
   });
 }
 $(document).ready(function($) {
-$(function() {
-  $( "#search-box-address" ).autocomplete({
-    source: addresses,
-    select: function( event, ui ) {
-      window.location.pathname = 'listings/' + ui.item.value
-    }
+  $(function() {
+    $( "#search-box-address" ).autocomplete({
+      source: addresses,
+      select: function( event, ui ) {
+        window.location.pathname = 'listings/' + ui.item.value
+      }
+    });
   });
-});
 });

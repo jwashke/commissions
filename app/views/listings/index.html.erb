@@ -40,17 +40,17 @@
                                 </div><!-- /.form-group -->
                                 <div class="form-group">
                                     <select name="bathroom" id="bathroom">
-                                      <option value="Bathrooms">Bathrooms</option>
+                                      <option value="">Bathrooms</option>
                                       <% @bathrooms.each do |bathroom| %>
                                         <option value="<%= bathroom %>"><%= bathroom %></option>
                                       <% end %>
                                     </select>
                                 </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <div class="price-range">
+                                <!-- <div class="form-group">
+                                    <div class="price-range" id="price-range">
                                         <input id="price-input" type="text" name="price" value="1000;299000">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <a href="#" class="btn btn-default" id="search">Search Now</a>
                                 </div><!-- /.form-group -->
