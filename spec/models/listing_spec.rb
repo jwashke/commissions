@@ -16,4 +16,17 @@ RSpec.describe Listing, type: :model do
 
     expect(Listing.all.count).to eq(4)
   end
+
+  it "can find out if a streetview image is available" do
+    VCR.use_cassette("store_feature#show") do
+      listing1 = Listing.create(latitude: 1, longitude: 1)
+      listing2 = Listing.create(latitude: 39.781505, longitude: -104.952024)
+
+      result1 = listing1.streetview_available?
+      result2 = listing2.streetview_available?
+
+      expect(result1).to eq(false)
+      expect(result2).to eq(true)
+    end
+  end
 end
