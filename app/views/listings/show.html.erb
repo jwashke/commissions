@@ -1,91 +1,87 @@
-
 <!-- Page Content -->
-  <div id="page-content">
-    <!-- Breadcrumb -->
-      <div class="container">
-        <ol class="breadcrumb">
-          <li><a href="/listings">Home</a></li>
-          <li class="active">Property Detail</li>
-        </ol>
+<div id="page-content">
+  <!-- Breadcrumb -->
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="/listings">Home</a></li>
+      <li class="active">Property Detail</li>
+    </ol>
+  </div>
+  <!-- end Breadcrumb -->
+  <div class="container">
+    <div class="row">
+    <!-- Property Detail Content -->
+      <div class="col-md-12">
+        <section id="property-detail">
+          <header class="property-title">
+            <h1><%= @listing.address_line_one %></h1>
+            <figure><%= @listing.address_line_two %></figure>
+          </header>
+        </section>
       </div>
-        <!-- end Breadcrumb -->
-      <div class="container">
+      <div class="col-md-9 col-sm-12">
+        <section id="property-gallery">
+          <div class="owl-carousel property-carousel">
+            <div class="property-slide">
+              <% if @listing.streetview_available || @listing.streetview_available? %>
+                <img src="https://maps.googleapis.com/maps/api/streetview?size=680x300&location=<%= @listing.latitude %>,<%= @listing.longitude %>&key=AIzaSyC8_5PQjZxAuVYV9OEQPz9d2HLCZfKaso0">
+              <% else %>
+                <img src="https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=<%= @listing.latitude %>,<%= @listing.longitude %>&zoom=18&size=680x300&path=weight:3%7Ccolor:blue%7Cenc:{coaHnetiVjM??_SkM??~R&key=AIzaSyC8_5PQjZxAuVYV9OEQPz9d2HLCZfKaso0">
+              <% end %>
+            </div><!-- /.property-slide -->
+          </div><!-- /.property-carousel -->
+        </section>
         <div class="row">
-        <!-- Property Detail Content -->
-        <div class="col-md-12">
-            <section id="property-detail">
-                <header class="property-title">
-                  <h1><%= @listing.address_line_one %></h1>
-                  <figure><%= @listing.address_line_two %></figure>
-                </header>
-              </section>
-            </div>
-                <div class="col-md-9 col-sm-12">
-                <section id="property-gallery">
-                  <div class="owl-carousel property-carousel">
-                    <div class="property-slide">
-                      <% if @listing.streetview_available || @listing.streetview_available? %>
-                      <img src="https://maps.googleapis.com/maps/api/streetview?size=680x300&location=<%= @listing.latitude %>,<%= @listing.longitude %>&key=AIzaSyC8_5PQjZxAuVYV9OEQPz9d2HLCZfKaso0">
-                      <% else %>
-                      <img src="https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=<%= @listing.latitude %>,<%= @listing.longitude %>&zoom=18&size=680x300&path=weight:3%7Ccolor:blue%7Cenc:{coaHnetiVjM??_SkM??~R&key=AIzaSyC8_5PQjZxAuVYV9OEQPz9d2HLCZfKaso0">
-                      <% end %>
-                    </div><!-- /.property-slide -->
-                  </div><!-- /.property-carousel -->
-                </section>
-              </section>
-                <div class="row">
-                  <div class="col-md-4 col-sm-12">
-                    <section id="quick-summary" class="clearfix">
-                      <header><h2>Quick Summary</h2></header>
-                        <dl>
-                          <dt>Location</dt>
-                            <dd><%= @listing.address_line_two %></dd>
-                          <dt>Price</dt>
-                          <dd><span class="tag price">$<%= @listing.list_price %></span></dd>
-                                        <dt>Property Type:</dt>
-                                            <dd><%= @listing.property_type %></dd>
-                                        <dt>Area:</dt>
-                                            <dd><%= @listing.square_feet %> ft<sup>2</sup></dd>
-                                        <dt>Beds:</dt>
-                                            <dd><%= @listing.total_bedrooms %></dd>
-                                        <dt>Baths:</dt>
-                                            <dd><%= @listing.total_baths %></dd>
-                                    </dl>
-                                </section><!-- /#quick-summary -->
-                            </div><!-- /.col-md-4 -->
-                            <div class="col-md-8 col-sm-12">
-                                <section id="description">
-                                    <header><h2>Property Description</h2></header>
-                                    <p>
-                                      <%= @listing.public_remarks %>
-                                    </p>
-                                </section><!-- /#description -->
-                              </div>
-                            </div>
-                          </section>
-                        </div>
-                              <!-- sidebar -->
-                <div class="col-md-3 col-sm-12">
-                    <section id="sidebar">
-                        <aside id="edit-search">
-                            <section id="quick-summary" class="clearfix">
-                              <header><h2>Commission</h2></header>
-                                <dl>
-                                  <dt>Buyer Agent:</dt>
-                                  <dd><span class="tag price">$<%= compensation_in_dollars(@listing.buyer_agency_compensation, @listing.list_price) %></span></dd>
-                                  <dt>Buyer Agent Percentage:</dt>
-                                  <dd><%= @listing.buyer_agency_compensation %>%</dd>
-                                  <dt>Listing Agent:</dt>
-                                    <dd><%= @listing.listing_agent_name %></dd>
-                                  <dt>Phone:</dt>
-                                  <dd><%= @listing.listing_agent_phone %></dd>
-                                  <dt>Email:</dt>
-                                  <dd><%= @listing.listing_agent_email %></dd>
-                                </dl>
-                      </section><!-- /#quick-summary -->
-                    </section><!-- /#sidebar -->
-                </div><!-- /.col-md-3 -->
-                <!-- end Sidebar -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </div>
+          <div class="col-md-4 col-sm-12">
+            <section id="quick-summary" class="clearfix">
+              <header><h2>Quick Summary</h2></header>
+              <dl>
+                <dt>Location</dt>
+                <dd><%= @listing.address_line_two %></dd>
+                <dt>Price</dt>
+                <dd><span class="tag price">$<%= @listing.list_price %></span></dd>
+                <dt>Property Type:</dt>
+                <dd><%= @listing.property_type %></dd>
+                <dt>Area:</dt>
+                <dd><%= @listing.square_feet %> ft<sup>2</sup></dd>
+                <dt>Beds:</dt>
+                <dd><%= @listing.total_bedrooms %></dd>
+                <dt>Baths:</dt>
+                <dd><%= @listing.total_baths %></dd>
+              </dl>
+            </section><!-- /#quick-summary -->
+          </div><!-- /.col-md-4 -->
+          <div class="col-md-8 col-sm-12">
+            <section id="description">
+              <header><h2>Property Description</h2></header>
+              <p>
+                <%= @listing.public_remarks %>
+              </p>
+            </section><!-- /#description -->
+          </div>
+        </div>
+      </div>
+      <!-- sidebar -->
+      <div class="col-md-3 col-sm-12">
+        <section id="sidebar">
+          <section id="quick-summary" class="clearfix">
+            <header><h2>Commission</h2></header>
+            <dl>
+            <dt>Buyer Agent:</dt>
+            <dd><span class="tag price">$<%= compensation_in_dollars(@listing.buyer_agency_compensation, @listing.list_price) %></span></dd>
+            <dt>Buyer Agent Percentage:</dt>
+            <dd><%= @listing.buyer_agency_compensation %>%</dd>
+            <dt>Listing Agent:</dt>
+            <dd><%= @listing.listing_agent_name %></dd>
+            <dt>Phone:</dt>
+            <dd><%= @listing.listing_agent_phone %></dd>
+            <dt>Email:</dt>
+            <dd><%= @listing.listing_agent_email %></dd>
+            </dl>
+          </section><!-- /#quick-summary -->
+        </section><!-- /#sidebar -->
+      </div><!-- /.col-md-3 -->
+      <!-- end Sidebar -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div>
