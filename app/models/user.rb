@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    self.admin == true ? true : false
+    self.admin
   end
 
   protected
