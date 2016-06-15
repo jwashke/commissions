@@ -30,7 +30,7 @@ class Listing < ActiveRecord::Base
 private
 
   def self.create_csv(file_path)
-    new_csv = CSV.open("tmp/data/new.csv", mode = "wb")
+    new_csv = CSV.open("lib/new.csv", mode = "wb")
     contents = CSV.open file_path
     contents.each do |listing|
       new_csv << listing
@@ -40,7 +40,7 @@ private
 
   def self.import(import)
     self.update_all(status: "inactive")
-    contents = CSV.open "tmp/data/new.csv", headers: true
+    contents = CSV.open "lib/new.csv", headers: true
     ActiveRecord::Base.transaction do
       contents.each do |l|
         listing = self.where(mls_number: l["MLS Number"]).first_or_initialize

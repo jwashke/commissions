@@ -16,3 +16,4 @@ coverage
 
 # Ignore application configuration
 /config/application.yml
+lib/new.csv
