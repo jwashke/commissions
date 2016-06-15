@@ -75,10 +75,6 @@
                                   <dd><span class="tag price">$<%= compensation_in_dollars(@listing.buyer_agency_compensation, @listing.list_price) %></span></dd>
                                   <dt>Buyer Agent Percentage:</dt>
                                   <dd><%= @listing.buyer_agency_compensation %>%</dd>
-                                  <dt>Transaction Broker:</dt>
-                                  <dd><span class="tag price">$<%= compensation_in_dollars(@listing.transaction_broker_compensation, @listing.list_price) %></span></dd>
-                                  <dt>Transaction Broker Percentage:</dt>
-                                  <dd><%= @listing.transaction_broker_compensation %>%</dd>
                                   <dt>Listing Agent:</dt>
                                     <dd><%= @listing.listing_agent_name %></dd>
                                   <dt>Phone:</dt>
@@ -86,7 +82,7 @@
                                   <dt>Email:</dt>
                                   <dd><%= @listing.listing_agent_email %></dd>
                                 </dl>
-                                        </section><!-- /#quick-summary -->
+                      </section><!-- /#quick-summary -->
                     </section><!-- /#sidebar -->
                 </div><!-- /.col-md-3 -->
                 <!-- end Sidebar -->
