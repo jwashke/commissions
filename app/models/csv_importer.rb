@@ -2,7 +2,6 @@ require 'csv'
 
 class CsvImporter
   def initialize(filepath)
-    binding.pry
     CSV.open("tmp/data/listings", 'w') do |writer|
       CSV.foreach(filepath, headers: true) do |listing|
         writer << listing
