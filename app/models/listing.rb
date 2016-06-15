@@ -18,7 +18,7 @@ class Listing < ActiveRecord::Base
   end
 
   def streetview_available?
-    image = Faraday.get("https://maps.googleapis.com/maps/api/streetview?size=600x300&location=#{self.latitude},#{self.longitude}&pitch=-0.76&key=#{ENV['STREET_VIEW_KEY']}")
+    image = StreetViewImageService.new.get_image(latitude, longitude)
     if image.env.response_headers["content-length"].to_i < 6000
       self.update(streetview_available: false)
     else
@@ -28,6 +28,7 @@ class Listing < ActiveRecord::Base
   end
 
 private
+
   def self.create_csv(file_path)
     new_csv = CSV.open("tmp/data/new.csv", mode = "wb")
     contents = CSV.open file_path
