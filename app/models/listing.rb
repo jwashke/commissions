@@ -18,7 +18,6 @@ class Listing < ActiveRecord::Base
   end
 
   def streetview_available?
-    image = StreetViewImageService.new()
     image = Faraday.get("https://maps.googleapis.com/maps/api/streetview?size=600x300&location=#{self.latitude},#{self.longitude}&pitch=-0.76&key=#{ENV['STREET_VIEW_KEY']}")
     if image.env.response_headers["content-length"].to_i < 6000
       self.update(streetview_available: false)
