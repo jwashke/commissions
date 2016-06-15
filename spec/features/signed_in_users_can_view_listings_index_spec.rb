@@ -2,14 +2,17 @@ require "rails_helper"
 
 RSpec.feature "User can view listings index" do
   context "as a logged in user who has signed documents" do
-    xit "they see all listings as markers on a map" do
-
-    end
   end
 
   context "as a logged in user who has not signed documents" do
-    xit "redirects them to the legal documents page" do
+    it "redirects them to the legal documents page" do
+      user = create(:user)
+      login_as user, scope: :user
+      listing = create(:listing)
 
+      visit listings_path(listing)
+
+      expect(current_path).to eq(signing_path)
     end
   end
 

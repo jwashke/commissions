@@ -9,6 +9,7 @@ RSpec.feature "User can view listings show" do
 
       visit listing_path(listing.mls_number)
 
+      expect(page).to have_selector("img[src$='https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=#{listing.latitude},#{listing.longitude}&zoom=18&size=680x300&path=weight:3%7Ccolor:blue%7Cenc:{coaHnetiVjM??_SkM??~R&key=AIzaSyC8_5PQjZxAuVYV9OEQPz9d2HLCZfKaso0']")
       expect(current_path).to eq(listing_path(listing.mls_number))
       expect(page).to have_content(listing.buyer_agency_compensation)
       expect(page).to have_content(listing.listing_agent_name)

@@ -57,7 +57,7 @@ function initMap() {
   $.ajax({
     type: 'GET',
     // dont use full path
-    url: 'http://localhost:3000/api/v1/listings',
+    url: '/api/v1/listings',
     success: function(listings) {
       $.each(listings, function(index, listing) {
         var mls_number = '"/listings/' + listing.mls_number.toString() + '"'
