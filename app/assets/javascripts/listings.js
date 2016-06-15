@@ -43,7 +43,7 @@ function initMap() {
     zoom: 12,
     styles: mapStyles
   });
-
+  var bounds = new google.maps.LatLngBounds();
   var contentString = ""
   var markers = []
   var image = "assets/marker.png"
@@ -108,17 +108,17 @@ function initMap() {
       markers[i].setMap(map)
       if (markers[i].city != city && city != "City") {
         markers[i].setMap(null);
-      };
-      if (markers[i].propertyType != propertyType && propertyType != "Property Type") {
+      } else if (markers[i].propertyType != propertyType && propertyType != "Property Type") {
         markers[i].setMap(null);
-      };
-      if (markers[i].bathrooms != bathrooms && bathrooms != "Bathrooms") {
+      } else if (markers[i].bathrooms != bathrooms && bathrooms != "Bathrooms") {
         markers[i].setMap(null);
-      };
-      if (markers[i].bedrooms != bedrooms && bedrooms != "Bedrooms") {
+      } else if (markers[i].bedrooms != bedrooms && bedrooms != "Bedrooms") {
         markers[i].setMap(null);
-      };
+      } else {
+        bounds.extend(markers[i].position);
+      }
     }
+    map.fitBounds(bounds);
   });
 }
 $(document).ready(function($) {
