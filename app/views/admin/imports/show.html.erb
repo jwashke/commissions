@@ -1,7 +1,32 @@
-<h2>Latest Import Information</h2>
-<ul>
-<li>Last Import started at: <%= @import.time_started %></li>
-<li>Completed in <%= @import.total_time %> seconds</li>
-<li>Previous number of active records:  <%= @import.prev_quantity_active %></li>
-<li>Current number of active records: <%= @import.current_quantity_active %></li>
-</ul>
+<!-- Page Content -->
+<div id="page-content">
+  <!-- Breadcrumb -->
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+      <li class="active">Latest Import</li>
+    </ol>
+    </div>
+    <!-- end Breadcrumb -->
+    <div class="container">
+      <header><h1>Import a CSV file</h1></header>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+          <section id="quick-summary" class="clearfix">
+              <header><h2>Latest Import:</h2></header>
+              <dl>
+                <dt>Last import started at:</dt>
+                <dd><%= @import.time_started %></dd>
+                <dt>Completed in:</dt>
+                <dd><%= @import.total_time %> seconds</dd>
+                <dt>Previous number of active records:</dt>
+                <dd><%= @import.prev_quantity_active %></dd>
+                <dt>Current number of active records:</dt>
+                <dd><%= @import.current_quantity_active %>  </dd>
+              </dl>
+            </section><!-- /#quick-summary -->
+          <hr>
+       </div>
+     </div>
+   </div>
+ </div>

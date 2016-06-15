@@ -1,7 +1,30 @@
-<div>
-<h3>Import a CSV File</h3>
-  <%= form_tag admin_imports_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import CSV" %>
-  <% end %>
-</div>
+<!-- Page Content -->
+<div id="page-content">
+  <!-- Breadcrumb -->
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+      <li class="active">Import CSV</li>
+    </ol>
+    </div>
+    <!-- end Breadcrumb -->
+    <div class="container">
+      <header><h1>Import a CSV file</h1></header>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+          <%= form_tag admin_imports_path, multipart: true do %>
+            <div class="field form-group">
+              <label class="btn btn-default btn-file">
+                <%= file_field_tag :file, class: "form-control", style: "display: none;" %>
+                Choose a file
+              </label>
+            </div>
+            <div class="actions form-group clearfix">
+              <%= submit_tag "Import CSV", class: "btn btn-default pull-right" %>
+            </div>
+          <% end %>
+          <hr>
+       </div>
+     </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- end Page Content -->
