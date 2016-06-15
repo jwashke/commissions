@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def admin?
+    self.admin == true ? true : false
+  end
+
   protected
 
   def confirmation_required?

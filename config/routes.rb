@@ -13,8 +13,15 @@ Rails.application.routes.draw do
   get "/listings/:mls_number", to: "listings#show", as: :listing
 
   namespace :api, defaults: { format: :json } do
-  namespace :v1 do
-    resources :listings, only: [:index]
+    namespace :v1 do
+      resources :listings, only: [:index]
+    end
   end
-end
+
+  namespace :admin do
+    resources :imports, only: [:new, :import] do
+      collection {post :import}
+    end
+    get "/imports/latest", to: "imports#show", as: :latest_import
+  end
 end

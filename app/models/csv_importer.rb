@@ -1,21 +1,22 @@
 require 'csv'
-class Listing < ActiveRecord::Base
 
-  def self.all_cached
-    Rails.cache.fetch('listings') do
-      self.where(status: "Active")
+class CsvImporter
+  def initialize(filepath)
+    CSV.open("tmp/data/listings", 'w') do |writer|
+      CSV.foreach(filepath, headers: true) do |listing|
+        writer << listing
+      end
     end
   end
 
-  def self.import(file)
+  def run
     import = Import.create(
       time_started: Time.now,
-      prev_quantity_active: self.where(status: "Active").count
+      prev_quantity_active: Listing.where(status: "Active").count
     )
-    contents = CSV.open file.path, headers: true
     Listing.update_all(status: "inactive")
     ActiveRecord::Base.transaction do
-      contents.each do |l|
+    CSV.foreach(@filepath, headers: true) do |l|
         listing = Listing.where(mls_number: l["MLS Number"]).first_or_initialize
         listing.mls_number = l["MLS Number"]
         listing.last_change_timestamp = DateTime.strptime(l["Last Change Timestamp"], "%m/%d/%Y %I:%M:%S %p")
@@ -52,18 +53,8 @@ class Listing < ActiveRecord::Base
     end
     import.update(
       total_time: (Time.now.to_f - import.time_started.to_f),
-      current_quantity_active: self.where(status: "Active").count
+      current_quantity_active: Listing.where(status: "Active").count
     )
     Rails.cache.clear
-  end
-
-  def streetview_available?
-    image = Faraday.get("https://maps.googleapis.com/maps/api/streetview?size=600x300&location=#{self.latitude},#{self.longitude}&pitch=-0.76&key=#{ENV['STREET_VIEW_KEY']}")
-    if image.env.response_headers["content-length"].to_i < 6000
-      self.update(streetview_available: false)
-    else
-      self.update(streetview_available: true)
-    end
-    return self.streetview_available
   end
 end

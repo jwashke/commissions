@@ -45,9 +45,4 @@ namespace :import_csv do
     Rails.cache.clear
   end
 
-  def streetview_available?(latitude, longitude)
-    binding.pry
-    image = Faraday.get("https://maps.googleapis.com/maps/api/streetview?size=600x300&location=#{latitude},#{longitude}&pitch=-0.76&key=#{ENV['STREET_VIEW_KEY']}")
-    image.env.response_headers["age"] == nil ? false : true
-  end
 end

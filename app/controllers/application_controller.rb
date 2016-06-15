@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def require_user_and_user_signed_docs
     redirect_to root_path unless user_signed_in? && current_user.signed_docs?
   end
+
+  def current_admin?
+    current_user && current_user.admin?
+  end
 end
