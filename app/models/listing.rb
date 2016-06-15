@@ -7,16 +7,41 @@ class Listing < ActiveRecord::Base
     end
   end
 
-  def self.import(file)
+  def self.new_import(file)
     import = Import.create(
       time_started: Time.now,
       prev_quantity_active: self.where(status: "Active").count
     )
-    contents = CSV.open file.path, headers: true
-    Listing.update_all(status: "inactive")
+    create_csv(file.path)
+    import(import)
+    Rails.cache.clear
+  end
+
+  def streetview_available?
+    image = Faraday.get("https://maps.googleapis.com/maps/api/streetview?size=600x300&location=#{self.latitude},#{self.longitude}&pitch=-0.76&key=#{ENV['STREET_VIEW_KEY']}")
+    if image.env.response_headers["content-length"].to_i < 6000
+      self.update(streetview_available: false)
+    else
+      self.update(streetview_available: true)
+    end
+    return self.streetview_available
+  end
+
+private
+  def self.create_csv(file_path)
+    new_csv = CSV.open("tmp/data/new.csv", "wb")
+    contents = CSV.open file_path
+    contents.each do |listing|
+      new_csv << listing
+    end
+  end
+
+  def self.import(import)
+    self.update_all(status: "inactive")
+    contents = CSV.open "tmp/data/new.csv", headers: true
     ActiveRecord::Base.transaction do
       contents.each do |l|
-        listing = Listing.where(mls_number: l["MLS Number"]).first_or_initialize
+        listing = self.where(mls_number: l["MLS Number"]).first_or_initialize
         listing.mls_number = l["MLS Number"]
         listing.last_change_timestamp = DateTime.strptime(l["Last Change Timestamp"], "%m/%d/%Y %I:%M:%S %p")
         listing.property_type = l["Type"]
@@ -54,16 +79,5 @@ class Listing < ActiveRecord::Base
       total_time: (Time.now.to_f - import.time_started.to_f),
       current_quantity_active: self.where(status: "Active").count
     )
-    Rails.cache.clear
-  end
-
-  def streetview_available?
-    image = Faraday.get("https://maps.googleapis.com/maps/api/streetview?size=600x300&location=#{self.latitude},#{self.longitude}&pitch=-0.76&key=#{ENV['STREET_VIEW_KEY']}")
-    if image.env.response_headers["content-length"].to_i < 6000
-      self.update(streetview_available: false)
-    else
-      self.update(streetview_available: true)
-    end
-    return self.streetview_available
   end
 end
