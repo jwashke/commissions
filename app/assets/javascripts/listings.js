@@ -43,7 +43,7 @@ function initMap() {
     zoom: 12,
     styles: mapStyles
   });
-
+  var bounds = new google.maps.LatLngBounds();
   var contentString = ""
   var markers = []
   var image = "assets/marker.png"
@@ -95,10 +95,6 @@ function initMap() {
         marker.setMap(map)
         markers.push(marker);
       });
-
-
-
-      // markerCluster = new MarkerClusterer(map, markers, options);
     }
   });
 
@@ -108,23 +104,21 @@ function initMap() {
     var propertyType = $("#type").val()
     var bathrooms = $("#bathroom").val()
     var bedrooms = $("#bedroom").val()
-    // markerCluster.clearMarkers()
     for (i = 0; i < markers.length; i++) {
       markers[i].setMap(map)
       if (markers[i].city != city && city != "City") {
         markers[i].setMap(null);
-      };
-      if (markers[i].propertyType != propertyType && propertyType != "Property Type") {
+      } else if (markers[i].propertyType != propertyType && propertyType != "Property Type") {
         markers[i].setMap(null);
-      };
-      if (markers[i].bathrooms != bathrooms && bathrooms != "Bathrooms") {
+      } else if (markers[i].bathrooms != bathrooms && bathrooms != "Bathrooms") {
         markers[i].setMap(null);
-      };
-      if (markers[i].bedrooms != bedrooms && bedrooms != "Bedrooms") {
+      } else if (markers[i].bedrooms != bedrooms && bedrooms != "Bedrooms") {
         markers[i].setMap(null);
-      };
+      } else {
+        bounds.extend(markers[i].position);
+      }
     }
-    // markerCluster = new MarkerClusterer(map, markers, options);
+    map.fitBounds(bounds);
   });
 }
 $(document).ready(function($) {
