@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_admin?
 
   def require_user_and_user_signed_docs
-    redirect_to root_path unless user_signed_in? && current_user.signed_docs?
+    if current_user && !current_user.signed_docs?
+      redirect_to signing_path
+    elsif !current_user
+      redirect_to root_path
+    end
   end
 
   def current_admin?

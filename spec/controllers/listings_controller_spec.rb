@@ -16,7 +16,7 @@ RSpec.describe ListingsController, type: :controller do
     end
 
     context "As a logged in user with unsigned docs" do
-      xit "redirects to the document signing page" do
+      it "redirects to the document signing page" do
         user = create(:user)
         sign_in user
 
@@ -52,9 +52,9 @@ RSpec.describe ListingsController, type: :controller do
     end
 
     context "As a logged in user with unsigned docs" do
-      xit "redirects to the document signing page" do
+      it "redirects to the document signing page" do
         listing = create(:listing)
-        user = create(:signed_user)
+        user = create(:user)
         sign_in user
 
         get :show, mls_number: listing.mls_number

@@ -8,14 +8,6 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
   end
 
-  describe "#confirmation_required?" do
-    it "returns false" do
-      user = create(:user)
-
-      expect(user.confirmation_required?).to be(false)
-    end
-  end
-
   describe "#sign_docs" do
     it "changes the users signed docs attribute to true and save it" do
       user = create(:user)
