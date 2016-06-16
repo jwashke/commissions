@@ -15,7 +15,7 @@
           <%= form_tag admin_imports_path, multipart: true do %>
             <div class="field form-group">
               <label class="btn btn-default btn-file">
-                <%= file_field_tag :file, class: "form-control", style: "display: none;" %>
+                <%= file_field_tag :file, class: "form-control", style: "display: none;", id: "#file" %>
                 Choose a file
               </label>
             </div>
