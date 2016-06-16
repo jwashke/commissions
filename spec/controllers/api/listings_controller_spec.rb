@@ -5,8 +5,8 @@ RSpec.describe Api::V1::ListingsController do
     it "can visit index" do
       user = create(:signed_user)
       sign_in user
-      listing1 = Listing.create(mls_number: 1234567, status: "Active")
-      listing2 = Listing.create(mls_number: 9876543, status: "inactive")
+      listing1 = Listing.create(mls_number: 1234567, status: "Active", list_price: 100)
+      listing2 = Listing.create(mls_number: 9876543, status: "inactive", list_price: 100)
 
       get "index", format: :json
       parsed = JSON.parse(response.body)
