@@ -3,6 +3,7 @@ var mapDiv
 var map
 var addresses = []
 var markerCluster
+var markers = []
 
 var clusterStyles = [
   {
@@ -45,7 +46,6 @@ function initMap() {
   });
   var bounds = new google.maps.LatLngBounds();
   var contentString = ""
-  var markers = []
   var image = "assets/marker.png"
   var pictureLabel = document.createElement("img");
        pictureLabel.src = "assets/single-family.png";
