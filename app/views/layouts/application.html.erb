@@ -8,7 +8,7 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body class="page-sub-page page-create-account page-account" id="page-top">
+<body class="page-sub-page page-create-account page-account <%= controller_name -%> <%= action_name -%>" id="page-top">
   <div class="wrapper">
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/messages' %>

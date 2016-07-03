@@ -9,20 +9,20 @@
     </div>
     <!-- end Breadcrumb -->
     <div class="container">
-      <header><h1>Import a CSV file</h1></header>
+      <header><h1>Latest Import</h1></header>
       <div class="row">
         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
           <section id="quick-summary" class="clearfix">
               <header><h2>Latest Import:</h2></header>
-              <dl>
+              <dl id="import-info">
                 <dt>Last import started at:</dt>
                 <dd><%= @import.time_started %></dd>
-                <dt>Completed in:</dt>
-                <dd><%= @import.total_time %> seconds</dd>
                 <dt>Previous number of active records:</dt>
                 <dd><%= @import.prev_quantity_active %></dd>
+                <dt>Completed in:</dt>
+                <dd id="ImportCompletedIn"></dd>
                 <dt>Current number of active records:</dt>
-                <dd><%= @import.current_quantity_active %>  </dd>
+                <dd id="ImportCurrentActiveRecords"></dd>
               </dl>
             </section><!-- /#quick-summary -->
           <hr>

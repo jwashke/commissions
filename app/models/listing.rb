@@ -7,7 +7,7 @@ class Listing < ActiveRecord::Base
     end
   end
 
-  def self.create_listings(listings)
+  def self.create_listings(listings, import_id)
     listings = JSON.parse(listings)
     ActiveRecord::Base.transaction do
       self.update_all(status: "Inactive")
@@ -46,9 +46,10 @@ class Listing < ActiveRecord::Base
         listing.save
       end
     end
-    Import.last.update(
+    Import.find(import_id).update(
       total_time: (Time.now.to_f - Import.last.time_started.to_f),
-      current_quantity_active: self.where(status: "Active").count
+      current_quantity_active: self.where(status: "Active").count,
+      status: "complete"
     )
     Rails.cache.clear
   end
