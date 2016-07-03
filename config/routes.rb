@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :listings, only: [:index]
+      get "/import", to: "imports#show"
     end
   end
 
