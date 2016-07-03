@@ -1,4 +1,4 @@
-class CsvWorker
+class CSVWorker
   include Sidekiq::Worker
 
   def perform(new_listings)
