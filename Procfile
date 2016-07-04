@@ -1,2 +1,2 @@
-web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-production}
-worker: bundle exec sidekiq -C config/sidekiq.yml
+web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
+worker: bundle exec sidekiq -e production -C config/sidekiq.yml
