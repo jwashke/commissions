@@ -25,7 +25,4 @@ Rails.application.routes.draw do
     end
     get "/imports/latest", to: "imports#show", as: :latest_import
   end
-
-  require 'sidekiq/web'
-  mount Sidekiq::Web, at: ’/sidekiq’
 end

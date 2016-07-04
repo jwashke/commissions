@@ -33,7 +33,6 @@ gem 'sidekiq'
 gem 'smarter_csv'
 gem 'redis'
 gem 'puma'
-gem 'sinatra'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
