@@ -11,12 +11,6 @@ RSpec.describe Listing, type: :model do
     expect(result).to eq([listing1])
   end
 
-  it "can import a csv" do
-    Listing.new_import(File.open("spec/data/test.csv", "r"))
-
-    expect(Listing.all.count).to eq(4)
-  end
-
   it "can find out if a streetview image is available" do
     VCR.use_cassette("store_feature#show") do
       listing1 = Listing.create(latitude: 1, longitude: 1)

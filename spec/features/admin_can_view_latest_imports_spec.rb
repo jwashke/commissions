@@ -9,10 +9,8 @@ RSpec.feature "User can view listings index" do
 
       visit admin_latest_import_path
 
-      expect(page).to have_content("Last import started at: #{import.time_started}")
-      expect(page).to have_content("Completed in: #{import.total_time} seconds")
-      expect(page).to have_content("Previous number of active records: #{import.prev_quantity_active}")
-      expect(page).to have_content("Current number of active records: #{import.current_quantity_active}")
+      expect(page).to have_content("Last import started at: #{import.time_started.strftime("%m/%d/%y %l:%M %p") }")
+      expect(page).to have_content("Previous number of active listings: #{import.prev_quantity_active}")
     end
   end
 
