@@ -3,7 +3,7 @@ $('.imports.show').ready(function () {
   checkStatusFunc();
 });
 
-var checkStatusInterval = 30000; // 3 seconds
+var checkStatusInterval = 20000; // 2 seconds
 var checkStatusFunc = function(){
   $.getJSON('/api/v1/import', function(importData){
     if (importData.status === "processing"){
