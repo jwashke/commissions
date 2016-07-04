@@ -294,6 +294,7 @@ DEPENDENCIES
   puma
   rails (= 4.2.6)
   rails_12factor
+  redis
   responders
   rspec-rails
   sass-rails (~> 5.0)
