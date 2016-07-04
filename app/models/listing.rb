@@ -54,16 +54,6 @@ class Listing < ActiveRecord::Base
     Rails.cache.clear
   end
 
-  # def self.new_import(file)
-  #   import = Import.create(
-  #     time_started: Time.now,
-  #     prev_quantity_active: self.where(status: "Active").count
-  #   )
-  #   create_csv(file.path)
-  #   import(import)
-  #   Rails.cache.clear
-  # end
-
   def streetview_available?
     image = StreetViewImageService.new.get_image(latitude, longitude)
     if image.env.response_headers["content-length"].to_i < 6000
@@ -73,7 +63,4 @@ class Listing < ActiveRecord::Base
     end
     return self.streetview_available
   end
-
-private
-
 end
