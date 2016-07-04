@@ -107,7 +107,7 @@ function initMap() {
       } else if (markers[i].bedrooms != bedrooms && bedrooms != "Bedrooms") {
         if (bedrooms != "5" || parseInt(markers[i].bedrooms) < 5)
           showMarker = false;
-      } 
+      }
       if (showMarker === true) {
         bounds.extend(markers[i].position);
         markerCluster.addMarker(markers[i]);
@@ -128,10 +128,6 @@ function setUpSearchAutoComplete() {
     }
   });
 };
-
-function setUpSearchButtonListener(bounds) {
-
-}
 
 function contentString(listing, mls_link) {
     var string =
