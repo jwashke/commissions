@@ -1,4 +1,4 @@
-# Commissionrablio
+# Commissionrableio
 
 [Heroku](https://trelora-commissions.herokuapp.com/)
 
@@ -6,7 +6,7 @@
 
 ![screenshot](https://s3-us-west-2.amazonaws.com/project-screenshots/commissions_screenshot.jpg)
 
-Commissionrablio allows users who have signed a home buyer agreement with Trelora to view MLS data on commission fees for homes available for sale in the Denver area.
+Commissionrableio allows users who have signed a home buyer agreement with Trelora to view MLS data on commission fees for homes available for sale in the Denver area.
 
 Data is pulled in from a CSV and homes are displayed as pins on a google map of Denver. Users can filter homes by certain attributes or search for homes. Clicking a link in a homes info window takes the user to a show page with more information about the home.
 
