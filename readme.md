@@ -86,7 +86,7 @@ Sidekiq
 
 As an admin user you will see a option in the navbar to upload a CSV file. Click that link, select the CSV file in the file input and click submit.
 
-![uploadGif](https://s3-us-west-2.amazonaws.com/project-screenshots/csvupload.gif)
+![CSVupload](https://s3-us-west-2.amazonaws.com/project-screenshots/csvupload.gif)
 
 ##### Through a Rake Task
 
