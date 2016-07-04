@@ -1,9 +1,7 @@
-require 'csv'
-
 namespace :import_csv do
   desc "loads new listings into database"
   task listings: :environment do
-    contents = SmarterCSV.process("tmp/data/FullExport.csv")
+    contents = SmarterCSV.process("db/data/Full Export.csv")
     Listing.update_all(status: "inactive")
     ActiveRecord::Base.transaction do
       contents.each do |l|
