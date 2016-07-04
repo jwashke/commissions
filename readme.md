@@ -84,7 +84,13 @@ To start Sidekiq, run the below command the main project directory.
 Sidekiq
 ```
 
-As an admin user you will see a option in the navbar to upload a CSV file. Click that link, select the CSV file in the file input and click submit.
+Create an admin user account in the rails console
+```
+rails c
+=> User.create(email: YOUR_EMAIL, password: YOUR_PASSWORD, admin: true)
+```
+
+Login as an admin user and you will see a option in the navbar to upload a CSV file. Click that link, select the CSV file in the file input and click submit.
 
 ![CSVupload](https://s3-us-west-2.amazonaws.com/project-screenshots/csv_upload.gif)
 
