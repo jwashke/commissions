@@ -32,6 +32,7 @@ gem 'responders'
 gem "active_model_serializers", github: "rails-api/active_model_serializers"
 gem 'sidekiq'
 gem 'smarter_csv'
+gem 'redis'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
