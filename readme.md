@@ -49,6 +49,11 @@ Start the server by running
 ```
 rails s
 ```
+Visit the site in your browser by going to
+```
+localhost:3000
+```
+
 
 #### Run the tests
 
